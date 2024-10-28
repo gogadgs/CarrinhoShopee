@@ -58,6 +58,7 @@ export class Carrinho extends Item{
                     userCarrinho.splice(deleteIndex,1);
                     calculateTotal(userCarrinho); 
             }
+            await calculateTotal(userCarrinho);
     }
 
     export async function removeItem(userCarrinho,item){
@@ -69,7 +70,7 @@ export class Carrinho extends Item{
 
            if(userCarrinho[indexFound].quantity > 1){
                 userCarrinho[indexFound].quantity -= 1;
-                userCarrinho[indexFound].subtotal = () => userCarrinho[indexFound].price * userCarrinho[indexFound].quantity;
+                  userCarrinho[indexFound].subTotal =  () =>  userCarrinho[indexFound].price * (userCarrinho[indexFound].quantity);
                 return;
            }
 
@@ -81,12 +82,12 @@ export class Carrinho extends Item{
     }
 
     export async function calculateTotal(userCarrinho){
-       const result =  userCarrinho.reduce((total,item)=> total + item.subTotal(),0);
+       const result = await  userCarrinho.reduce((total,item)=> total + item.subTotal(),0);
        console.log(`💵 Total atualizado: R$${result.toFixed(2)}`);
     }
     export async function displayCarrinho(userCarrinho){
         console.log("\n----- produtos dentro da lista do carrinho--------\n");
-        userCarrinho.forEach((item , index)=>{
+         userCarrinho.forEach((item , index)=>{
                 console.log(`${index + 1} - ${item.name} - ${item.quantity}x -  R$${item.price} -  ${item.subTotal()}\n`);
                 
         });

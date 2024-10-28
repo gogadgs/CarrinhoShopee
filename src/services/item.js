@@ -36,7 +36,7 @@
             nameItem,
             mountItem,
             valorUnitarioItem,
-            subtotal:() =>  mountItem * valorUnitarioItem,
+            subtotal:async () =>  await mountItem * valorUnitarioItem,
         }
     }
 
