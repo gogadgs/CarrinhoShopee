@@ -1,0 +1,13 @@
+{
+  "name": "carrinhoshope",
+  "version": "1.0.0",
+  "description": "procedimento para aprender codigos backend do site shope",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"node --watch src/index.js"
+  },
+  "author": "Douglas Godois dos Santos",
+  "license": "ISC",
+  "type": "module"
+}
